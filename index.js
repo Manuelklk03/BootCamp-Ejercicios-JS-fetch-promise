@@ -23,3 +23,31 @@ async function getAllImagesByBreed() {
 
   return data.message;
 }
+
+//Ejercicio 4
+async function getAllImagesByBreed2(breed) {
+  const response = await fetch(`https://dog.ceo/api/breed/${breed}/images`);
+  const data = await response.json();
+
+  return data.message;
+}
+
+//Ejercicio 5
+//6.
+async function printGithubUserProfile(username) {
+  const user = await getGitHubUserProfile(username);
+
+  const img = document.createElement("img");
+  img.src = user.avatar_url;
+  img.alt = user.name;
+
+  const nombre = document.createElement("h2");
+  nombre.textContent = user.name;
+
+  document.body.append(img, nombre);
+
+  return {
+    img: user.avatar_url,
+    name: user.name,
+  };
+}
